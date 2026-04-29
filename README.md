@@ -46,16 +46,16 @@ NPR Scraper for Obsidian is a comprehensive Python utility that identifies all a
 
 ### 📋 Configuration Notes
 
-The script relies on several constants located at the beginning of `npr_scraper.py`:
+The utility relies on several constants located at the beginning of `npr_scraper.py`:
 
-* `OUTPUT_DIR_PATH`: Replace `***INSERT FILEPATH HERE***`. If you do not configure this setting, the articles will be downloaded to a folder named "NPR" in the same directory as the script.
-* `ARTICLE_SORT`: If set to `True`, the script will sort markdown files into folders within `OUTPUT_DIR_PATH` based on NPR-provided taxonomy. If `False` (default), all files will be saved directly to `OUTPUT_DIR_PATH`.
-* `ARTICLE_SELECTORS` / `ARTICLE_EXCLUDERS`: These list regular expressions/CSS classes used by the script to determine which links on the main page are valid article links. These selectors are highly dependent on NPR's current site structure and may need periodic updates.
+* `OUTPUT_DIR_PATH`: Replace `***INSERT FILEPATH HERE***`. If you do not configure this setting, the articles will be downloaded to a folder named "NPR" in the same directory as the utility.
+* `ARTICLE_SORT`: If set to `True`, the utility will sort markdown files into folders within `OUTPUT_DIR_PATH` based on NPR-provided taxonomy. If `False` (default), all files will be saved directly to `OUTPUT_DIR_PATH`.
+* `ARTICLE_SELECTORS` / `ARTICLE_EXCLUDERS`: These list regular expressions/CSS classes used by the utility to determine which links on the main page are valid article links. These selectors are highly dependent on NPR's current site structure and may need periodic updates.
 
 ## 🚀 Usage Guide
 
 1.  **Configure Path:** Update `OUTPUT_DIR_PATH` in `npr_scraper.py` to the file path of your desired save location. See Configuration Notes above.
-2.  **Run the Script:**
+2.  **Run the Utility:**
     ```bash
     python npr_scraper.py
     ```
@@ -74,7 +74,7 @@ The core logic is split into two main pipelines:
 
 ## 🪨 Obsidian Integration
 
-1. Once the script has saved the articles in your Obsidian Vault, you can use either [Obsidian Bases](https://obsidian.md/help/bases), [Dataview](https://blacksmithgu.github.io/obsidian-dataview/), or [DataCards](https://sophokles187.github.io/data-cards/#/)
+1. Once the utility has saved the articles in your Obsidian Vault, you can use either [Obsidian Bases](https://obsidian.md/help/bases), [Dataview](https://blacksmithgu.github.io/obsidian-dataview/), or [DataCards](https://sophokles187.github.io/data-cards/#/)
 2. For Bases, use the `cover_url` property. For Dataview or DataCards, use `cover`.
 3. For example, use the following query in DataCards:
 	```datacards
