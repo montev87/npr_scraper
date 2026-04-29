@@ -46,7 +46,7 @@ NPR Scraper for Obsidian is a comprehensive Python utility that identifies all a
     * Replace `***INSERT FILEPATH HERE***` with the path to your desired save location within your Obsidian Vault (**this does not create a subfolder within your specified path**).
     * If you do not configure this setting, the files will be saved to a folder named "NPR" in the same directory as the utility.
 
-5. Ensure that you have the required Python libraries ([Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest) and [Requests](https://docs.python-requests.org/en/latest/index.html)) installed in your Python environment by running **one of** the commands below:
+5. Ensure that you have the installed the required Python libraries ([Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest) and [Requests](https://docs.python-requests.org/en/latest/index.html)) in your Python environment by running **one of** the commands below:
 
 	```bash
 	pip install -r requirements.txt
