@@ -5,17 +5,27 @@ NPR Scraper for Obsidian is a comprehensive Python utility that identifies all a
 ## ✨ Key Features
 
 *   **Bulk Scraping:** Scrape all articles and transcripts from the main NPR section page in a single run.
-*   **Metadata Rich:** Each saved article includes a comprehensive YAML frontmatter block containing:
-    *   Title, Author, Category, and Topics.
+*   **Metadata Rich:** Each file includes a comprehensive YAML frontmatter block, including the following properties:
+|  Column 1      | Column 2      |
+| ------------- | ------------- |
+| Cell 1, Row 1 | Cell 2, Row 1 |
+| Cell 1, Row 2 | Cell 1, Row 2 |
+    *   `title` 
+    *   `outlet` (this is always "NPR")
+    *   `source` 
+    *   Category
+    *   Topics.
+    *   Source URL.
     *   Publication Date and Timestamp.
-    *   The source URL and scraper timestamp.
-    *   Support for the primary article content type (`article`) or transcript (`transcript`).
+    *   .
+    *   Primary content type (`article` or `transcript`).
+    *   Cover images that are compatible with a variety of Obsidian plugins.
+    *   
 *   **Advanced Content Parsing:** The scraper intelligently handles converting various HTML elements to Markdown format, such as:
     *   **Headings:** Extracts and formats HTML header tags (`<h1>`, `<h2>`, etc.) and converts to Markdown (`#`, `##`, etc.).
     *   **Media:** Processes images (including captions and credits) and preserves embedded video/audio players.
     *   **Structural Cleanliness:** Includes logic to skip common boilerplate elements, such as `pullquotes`, `bucketblocks`, and media promotions, ensuring only core journalistic content is captured.
-*   **Transcript Support:** Detects and properly handles transcripts.
-*   **Robust Sanitization:** Utilizes a specialized `sanitize` function to clean titles and filenames, removing characters invalid for most operating systems and Obsidian.
+
 
 ## 🛠️ Setup and Prerequisites
 
