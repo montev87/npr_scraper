@@ -30,11 +30,11 @@ NPR Scraper for Obsidian is a comprehensive Python utility that identifies all a
 
 ## 🛠️ Setup and Prerequisites
 
-1. [Download and install Obsidian.](https://obsidian.md/download)
+1. If you do not already have Obsidian installed, [download and install Obsidian.](https://obsidian.md/download)
 
-2. [Download and install Python.](https://www.python.org/downloads)
+2. If you do not already have Python installed, [download and install Python.](https://www.python.org/downloads)
 
-3. Ensure you have the following Python libraries ([Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest) and [Requests](https://docs.python-requests.org/en/latest/index.html)) installed in your environment. Run **one of** the commands below:
+3. Ensure you have the required Python libraries ([Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest) and [Requests](https://docs.python-requests.org/en/latest/index.html)) installed in your Python environment. Run **one of** the commands below:
 
 	```bash
 	pip install -r requirements.txt
