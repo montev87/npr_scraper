@@ -55,11 +55,15 @@ The utility relies on several constants located at the beginning of `npr_scraper
 ## 🚀 Usage Guide
 
 1.  **Configure Output Directory Path:** Update `OUTPUT_DIR_PATH` in `npr_scraper.py` to the file path of your desired save location. See Configuration Notes above.
-2.  **Run the Utility:**
+2.  **Run the utility:**
     ```bash
     python npr_scraper.py
     ```
-3.  **Monitoring:** The console output will provide real-time status updates:
+    *Also supports single-article scraping by running the following command:*
+    ```bash
+    python npr_single_scraper.py
+    ```
+4.  **Monitoring:** The console output will provide real-time status updates:
     *   Which URL is being processed.
     *   Whether any critical errors were encountered.
     *   The final summary of successfully saved articles.
