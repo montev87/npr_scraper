@@ -8,7 +8,7 @@ NPR Scraper for Obsidian is a comprehensive Python utility that identifies all a
 *   **Metadata Rich:** Each file includes a comprehensive YAML frontmatter block, including the following:
 | Property | Notes |
 |----------|-------|
-|`title`   | Article title
+|`title`   | Article title|
     *   `outlet` (this is always "NPR")
     *   `source` 
     *   Category
