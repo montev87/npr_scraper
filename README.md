@@ -36,7 +36,15 @@ NPR Scraper for Obsidian is a comprehensive Python utility that identifies all a
    
 3. Download this repository.
    
-4. Open `npr_scraper.py` with the text editor Update `OUTPUT_DIR_PATH` in `npr_scraper.py` to the file path of your desired save location. See Configuration Notes above.
+4. Open `npr_scraper.py` with the text/code editor of your choice and update the `OUTPUT_DIR_PATH` variable.
+    * Find the following code block:
+    ```
+    OUTPUT_DIR_PATH = Path(
+    "***INSERT FILEPATH HERE***"
+    )
+    ```
+    * Replace `***INSERT FILEPATH HERE***` with the path to your desired save location within your Obsidian Vault (**this does not create a subfolder within your specified path**).
+    * If you do not configure this setting, the files will be saved to a folder named "NPR" in the same directory as the utility.
 
 5. Ensure that you have the required Python libraries ([Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest) and [Requests](https://docs.python-requests.org/en/latest/index.html)) installed in your Python environment by running **one of** the commands below:
 
