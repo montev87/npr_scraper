@@ -34,7 +34,7 @@ NPR Scraper for Obsidian is a comprehensive Python utility that identifies all a
 
 2. If you do not already have Python installed, [download and install Python.](https://www.python.org/downloads)
    
-3. Download this repository.
+3. [Download NPR Scraper for Obsidian](https://github.com/montev87/npr_scraper/archive/refs/heads/main.zip) and unzip it.
    
 4. Open `npr_scraper.py` with the text/code editor of your choice and update the `OUTPUT_DIR_PATH` variable.
     * Find the following code block:
