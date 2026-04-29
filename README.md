@@ -46,9 +46,9 @@ pip install beautifulsoup4 requests
 ```
 
 Docs:
-4. [Python](https://docs.python.org/3)
-5. [Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest)
-6. [Requests](https://docs.python-requests.org/en/latest/index.html)
+1. [Python](https://docs.python.org/3)
+2. [Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest)
+3. [Requests](https://docs.python-requests.org/en/latest/index.html)
 
 ### 📋 Configuration Notes
 
