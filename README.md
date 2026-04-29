@@ -60,7 +60,6 @@ NPR Scraper for Obsidian is a comprehensive Python utility that identifies all a
 
 The utility relies on several other constants located at the beginning of `npr_scraper.py`:
 
-* `OUTPUT_DIR_PATH`: Replace `***INSERT FILEPATH HERE***` with the path to your desired save location within your Obsidian Vault (**this does not create a folder within your specified path**). If you do not configure this setting, the files will be saved to a folder named "NPR" in the same directory as the utility.
 * `ARTICLE_SORT`: Defaults to `False`. If set to `True`, the utility will sort the files into subfolders within `OUTPUT_DIR_PATH` based on the NPR-provided taxonomy. If `False`, all files will be saved directly to `OUTPUT_DIR_PATH`.
 * `ARTICLE_SELECTORS` / `ARTICLE_EXCLUDERS`: These list regular expressions/CSS classes used by the utility to determine which links on the main page are valid article links. **These selectors are highly dependent on NPR's current site structure and may need periodic updates.**
 
