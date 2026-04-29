@@ -497,7 +497,7 @@ def save_markdown_file(url: str, content: str, output_dir: Path, html_content: s
     ):
         output_dir = Path(f"{script_dir}/NPR")
     else:
-        output_dir = Path({output_dir})
+        output_dir = Path(output_dir)
     if ARTICLE_SORT == True:
         taxonomy = soup.find("meta", attrs={"name": "cXenseParse:taxonomy"}).get(
             "content"
