@@ -54,7 +54,7 @@ The utility relies on several constants located at the beginning of `npr_scraper
 
 ## 🚀 Usage Guide
 
-1.  **Configure Path:** Update `OUTPUT_DIR_PATH` in `npr_scraper.py` to the file path of your desired save location. See Configuration Notes above.
+1.  **Configure Output Directory Path:** Update `OUTPUT_DIR_PATH` in `npr_scraper.py` to the file path of your desired save location. See Configuration Notes above.
 2.  **Run the Utility:**
     ```bash
     python npr_scraper.py
