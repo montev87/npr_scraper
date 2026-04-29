@@ -25,9 +25,8 @@ NPR Scraper for Obsidian is a comprehensive Python utility that identifies all a
 	
 *   **Advanced Content Parsing:** The scraper intelligently handles converting various HTML elements to Markdown format, such as:
     *   **Headings:** Extracts and formats HTML header tags (`<h1>`, `<h2>`, etc.) and converts to Markdown (`#`, `##`, etc.).
-    *   **Media:** Processes images (including captions and credits) and preserves embedded video/audio players.
+    *   **Media:** Processes images (including captions and credits) and preserves embedded video/audio players (as HTML).
     *   **Structural Cleanliness:** Includes logic to skip common boilerplate elements, such as `pullquotes`, `bucketblocks`, and media promotions, ensuring only core journalistic content is captured.
-
 
 ## 🛠️ Setup and Prerequisites
 
@@ -35,20 +34,15 @@ NPR Scraper for Obsidian is a comprehensive Python utility that identifies all a
 
 2. [Download and install Python.](https://www.python.org/downloads)
 
-3. Ensure you have the following Python libraries installed in your environment. Run **one of** the commands below:
+3. Ensure you have the following Python libraries ([Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest) and [Requests](https://docs.python-requests.org/en/latest/index.html)) installed in your environment. Run **one of** the commands below:
 
-```bash
-pip install -r requirements.txt
-```
-
-```bash
-pip install beautifulsoup4 requests
-```
-
-Docs:
-1. [Python](https://docs.python.org/3)
-2. [Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest)
-3. [Requests](https://docs.python-requests.org/en/latest/index.html)
+	```bash
+	pip install -r requirements.txt
+	```
+	
+	```bash
+	pip install beautifulsoup4 requests
+	```
 
 ### 📋 Configuration Notes
 
