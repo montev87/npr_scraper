@@ -83,7 +83,7 @@ The utility relies on several other constants located at the beginning of `npr_s
 
 1. Once the utility has saved the articles in your Obsidian Vault, you can use either [Obsidian Bases](https://obsidian.md/help/bases), [Dataview](https://blacksmithgu.github.io/obsidian-dataview/), or [DataCards](https://sophokles187.github.io/data-cards/#/)
 2. For Bases, use the `cover_url` property. For Dataview or DataCards, use `cover`.
-3. For example, use the following query for DataCards (for Dataview, just change `datacards` to `dataview`:
+3. As an example, use the following query for DataCards (for Dataview, just change `datacards` to `dataview`:
 	````
 	```datacards
 	TABLE cover AS "", published_date AS Published, category AS Category
