@@ -33,8 +33,12 @@ NPR Scraper for Obsidian is a comprehensive Python utility that identifies all a
 1. If you do not already have Obsidian installed, [download and install Obsidian.](https://obsidian.md/download)
 
 2. If you do not already have Python installed, [download and install Python.](https://www.python.org/downloads)
+   
+3. Download this repository.
+   
+4. Open `npr_scraper.py` with the text editor Update `OUTPUT_DIR_PATH` in `npr_scraper.py` to the file path of your desired save location. See Configuration Notes above.
 
-3. Ensure that you have the required Python libraries ([Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest) and [Requests](https://docs.python-requests.org/en/latest/index.html)) installed in your Python environment by running **one of** the commands below:
+5. Ensure that you have the required Python libraries ([Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest) and [Requests](https://docs.python-requests.org/en/latest/index.html)) installed in your Python environment by running **one of** the commands below:
 
 	```bash
 	pip install -r requirements.txt
@@ -46,7 +50,7 @@ NPR Scraper for Obsidian is a comprehensive Python utility that identifies all a
 
 ### 📋 Configuration Notes
 
-The utility relies on several constants located at the beginning of `npr_scraper.py`:
+The utility relies on several other constants located at the beginning of `npr_scraper.py`:
 
 * `OUTPUT_DIR_PATH`: Replace `***INSERT FILEPATH HERE***` with the path to your desired save location within your Obsidian Vault (**this does not create a folder within your specified path**). If you do not configure this setting, the files will be saved to a folder named "NPR" in the same directory as the utility.
 * `ARTICLE_SORT`: Defaults to `False`. If set to `True`, the utility will sort the files into subfolders within `OUTPUT_DIR_PATH` based on the NPR-provided taxonomy. If `False`, all files will be saved directly to `OUTPUT_DIR_PATH`.
@@ -54,33 +58,25 @@ The utility relies on several constants located at the beginning of `npr_scraper
 
 ## 🚀 Usage Guide
 
-1.  **Configure Output Directory Path:** Update `OUTPUT_DIR_PATH` in `npr_scraper.py` to the file path of your desired save location. See Configuration Notes above.
-2.  **Run the utility:**
+1.  **Run the utility:**
     ```bash
     python npr_scraper.py
     ```
-    *Also supports single-article scraping by running the following command:*
+    *Also supports single-article scraping without configuration (saves the article to a folder named "NPR" in the same directory as the utility) by running the following command:*
     ```bash
     python npr_single_scraper.py
     ```
-4.  **Monitoring:** The console output will provide real-time status updates:
+2.  **Monitor:**
+    The console output will provide real-time status updates, including:
     *   Which URL is being processed.
     *   Whether any critical errors were encountered.
     *   The final summary of successfully saved articles.
-
-## 🧠 Technical Deep Dive (How It Works)
-
-The scraper is designed with efficiency in mind. Instead of making separate requests for metadata extraction, the `fetch_content` function uses a global variable (`CURRENT_CONTENT`) to store the raw HTML body of the fetched page. This ensures that when `save_markdown_file` runs, it accesses the already downloaded content without initiating a second network request, making the bulk scraping process significantly faster.
-
-The core logic is split into two main pipelines:
-1. **`scrape_article_content`:** Focuses solely on extracting and formatting the *body text*.
-2. **`save_markdown_file`:** Focuses on packaging the content with all the necessary *metadata* (frontmatter) and handling the file system save operation.
 
 ## 🪨 Obsidian Integration
 
 1. Once the utility has saved the articles in your Obsidian Vault, you can use either [Obsidian Bases](https://obsidian.md/help/bases), [Dataview](https://blacksmithgu.github.io/obsidian-dataview/), or [DataCards](https://sophokles187.github.io/data-cards/#/)
 2. For Bases, use the `cover_url` property. For Dataview or DataCards, use `cover`.
-3. For example, use the following query in DataCards:
+3. For example, use the following query for DataCards (for Dataview, just change `datacards` to `dataview`:
 	```datacards
 	TABLE cover AS "", published_date AS Published, category AS Category
 	FROM #NPR
