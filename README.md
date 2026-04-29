@@ -6,23 +6,23 @@ NPR Scraper for Obsidian is a comprehensive Python utility that identifies all a
 
 *   **Bulk Scraping:** Scrape all articles and transcripts from the main NPR section page in a single run.
 *   **Metadata Rich:** Each file includes a comprehensive YAML frontmatter block, including the following:
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
-| Property |     Notes     |
-| -------- | ------------- |
-| `title`  | Article title |
-    *   `outlet` (this is always "NPR")
-    *   `source` 
-    *   Category
-    *   Topics.
-    *   Source URL.
-    *   Publication Date and Timestamp.
-    *   .
-    *   Primary content type (`article` or `transcript`).
-    *   Cover images that are compatible with a variety of Obsidian plugins.
-    *   
+
+	| Property              | Notes                  |
+	| --------------------- | ---------------------- |
+	| `title`               | Source title (sanitized to be Obsidian/file system safe |
+	| `outlet`              | For organizational purposes - always `NPR` |
+    | `source`              | Source URL |
+    | `author`              | List of source authors |
+    | `category`            | Source category (uses last item in NPR-provided taxonomy) |
+	| `topics`              | List of source topics (combines NPR-provided taxonomy and tags) |
+	| `type`                | `article` or `transcript` |
+	| `published_date`      | Source published date |
+	| `published_timestamp` | Source published timestamp |
+	| `scraped_timestamp`   | Scraped timestamp |
+	| `cover`				| Cover image embedded HTML for use with Obsidian Dataview/DataCards plugins |
+	| `cover_url`           | Cover image URL for use with Obsidian Bases plugin |
+	| `tags`                | List containing only `NPR` |
+	
 *   **Advanced Content Parsing:** The scraper intelligently handles converting various HTML elements to Markdown format, such as:
     *   **Headings:** Extracts and formats HTML header tags (`<h1>`, `<h2>`, etc.) and converts to Markdown (`#`, `##`, etc.).
     *   **Media:** Processes images (including captions and credits) and preserves embedded video/audio players.
