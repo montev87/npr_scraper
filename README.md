@@ -56,13 +56,6 @@ NPR Scraper for Obsidian is a comprehensive Python utility that identifies all a
 	pip install beautifulsoup4 requests
 	```
 
-### 📋 Configuration Notes
-
-The utility relies on several other constants located at the beginning of `npr_scraper.py`:
-
-* `ARTICLE_SORT`: Defaults to `False`. If set to `True`, the utility will sort the files into subfolders within `OUTPUT_DIR_PATH` based on the NPR-provided taxonomy. If `False`, all files will be saved directly to `OUTPUT_DIR_PATH`.
-* `ARTICLE_SELECTORS` / `ARTICLE_EXCLUDERS`: These list regular expressions/CSS classes used by the utility to determine which links on the main page are valid article links. **These selectors are highly dependent on NPR's current site structure and may need periodic updates.**
-
 ## 🚀 Usage Guide
 
 1.  **Run the utility:**
@@ -78,6 +71,13 @@ The utility relies on several other constants located at the beginning of `npr_s
     *   Which URL is being processed.
     *   Whether any critical errors were encountered.
     *   The final summary of successfully saved articles.
+
+### 📋 Configuration Notes
+
+The utility relies on several other constants located at the beginning of `npr_scraper.py`:
+
+* `ARTICLE_SORT`: Defaults to `False`. If set to `True`, the utility will sort the files into subfolders within `OUTPUT_DIR_PATH` based on the NPR-provided taxonomy. If `False`, all files will be saved directly to `OUTPUT_DIR_PATH`.
+* `ARTICLE_SELECTORS` / `ARTICLE_EXCLUDERS`: These list regular expressions/CSS classes used by the utility to determine which links on the main page are valid article links. **These selectors are highly dependent on NPR's current site structure and may need periodic updates.**
 
 ## 🪨 Obsidian Integration
 
