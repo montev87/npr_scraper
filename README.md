@@ -6,6 +6,10 @@ NPR Scraper for Obsidian is a comprehensive Python utility that identifies all a
 
 *   **Bulk Scraping:** Scrape all articles and transcripts from the main NPR section page in a single run.
 *   **Metadata Rich:** Each file includes a comprehensive YAML frontmatter block, including the following:
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
 | Property |     Notes     |
 | -------- | ------------- |
 | `title`  | Article title |
