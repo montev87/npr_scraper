@@ -2,6 +2,9 @@
 
 NPR Scraper for Obsidian is a comprehensive Python utility that identifies all articles and transcripts indexed by [NPR.org](https://www.npr.org/), extracts the substantive content and metadata from each, and saves them as frontmatter-rich Markdown files optimized for compatibility with [Obsidian](https://obsidian.md/).
 
+### Obsidian Bases Example:
+![Bases Screenshot](Screenshots/Bases.png)
+
 ## ✨ Key Features
 
 *   **Bulk Scraping:** Scrape all articles and transcripts indexed by [NPR.org](https://www.npr.org/) in a single run.
