@@ -21,15 +21,15 @@ The frontmatter collected by the utility is compatible with a variety of Obsidia
 	| `outlet`              | For organizational purposes - always `NPR` |
     | `source`              | Source URL |
     | `author`              | List of source authors |
-    | `category`            | Source category (uses last item in NPR-provided taxonomy) |
-	| `topics`              | List of source topics (combines NPR-provided taxonomy and tags) |
+    | `category`            | Source category (falls back to last item in NPR-provided taxonomy) |
+	| `topics`              | List of source topics (combines NPR-provided taxonomy, category, and tags) |
 	| `type`                | `article` or `transcript` |
 	| `published_date`      | Source published date |
 	| `published_timestamp` | Source published timestamp |
 	| `scraped_timestamp`   | Scraped timestamp |
 	| `cover`				| Cover image embedded HTML for use with Obsidian Dataview/DataCards plugins |
 	| `cover_url`           | Cover image URL for use with Obsidian Bases plugin |
-	| `tags`                | List containing only `NPR` |
+	| `tags`                | Formatted and filtered list of \[`NPR`, `article_topics`\] |
 	
 *   **Advanced Content Parsing:** The scraper intelligently handles converting various HTML elements to Markdown format, such as:
     *   **Headings:** Extracts and formats HTML header tags (`<h1>`, `<h2>`, etc.) and converts to Markdown (`#`, `##`, etc.).
