@@ -2,7 +2,7 @@
 
 NPR Scraper for Obsidian is a comprehensive Python utility that identifies all articles and transcripts indexed by [NPR.org](https://www.npr.org/), extracts the substantive content and metadata from each, and saves them as frontmatter-rich Markdown files optimized for compatibility with [Obsidian](https://obsidian.md/).
 
-The frontmatter collected by the utility is compatible with a variety of Obsidian plugins, including Obsidian Bases, Dataview, and DataCards.
+The frontmatter collected by the utility is compatible with a variety of Obsidian plugins, including [Obsidian Bases](https://obsidian.md/help/bases), [Dataview](https://blacksmithgu.github.io/obsidian-dataview/), and [DataCards](https://sophokles187.github.io/data-cards/#/).
 
 ### Obsidian Bases Example:
 ![Bases Screenshot](Screenshots/Bases.png)
