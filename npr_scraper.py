@@ -577,10 +577,12 @@ def save_markdown_file(url: str, content: str, output_dir: Path, html_content: s
         article_tags = ["NPR"]
         if "N/A" not in article_topics:
             for topic in article_topics:
-                article_tags.append((sanitize(topic)).replace(" ", ""))
+                if len(topic) <= 25:
+                    article_tags.append((sanitize(topic)).replace(" ", "").replace(".", ""))
         if "N/A" != article_category:
             if article_category not in article_topics:
-                article_tags.append((sanitize(article_category)).replace(" ", ""))
+                if len(article_category) <= 25:
+                    article_tags.append((sanitize(article_category)).replace(" ", "").replace(".", ""))
 
         if main_content_area:
             article_type = "article"
