@@ -88,7 +88,7 @@ def scrape_article_content(url: str) -> Optional[str]:
         article_title = f"# {article_title_container.get_text(strip=True)}"
         header_parts.append(article_title)
     else:
-        # Return None if article does not have title
+        # Return None if article does not have title (prints error in main)
         return None
 
     # Date
@@ -416,11 +416,10 @@ def save_markdown_file(url: str, content: str, html_content: str):
 
     """Save the content to a uniquely named Markdown file."""
 
-    # Create a slug-like filename from the URL
     article_title_container = soup.find("div", class_="storytitle")
     if article_title_container:
         if main_content_area:
-            article_title = f'"{article_title_container.get_text(strip=True)}"'
+            article_title = f'"{article_title_container.get_text(strip=True).strip(':')}"'
         elif transcript_content_area:
             article_title = (
                 f'"{article_title_container.get_text(strip=True)} (Transcript)"'
@@ -466,41 +465,47 @@ def save_markdown_file(url: str, content: str, html_content: str):
             article_timestamp = article_timestamp_container.get("content")
 
         # Topic(s)
+        article_topics = []
         article_topics_container = soup.find(
             "meta", attrs={"name": "cXenseParse:taxonomy"}
         )
-        article_fallback_wrapper = soup.find("div", attrs={"class": "slug-wrap"})
         if article_topics_container:
-            article_topics = article_topics_container.get("content").split("/")
-        elif article_fallback_wrapper:
-            article_fallback_container = article_fallback_wrapper.find("a")
-            if article_fallback_container:
-                article_fallback = article_fallback_container.get_text(strip=True)
-                article_topics = [article_fallback]
+            article_topics = article_topics_container.get("content").replace(":", " -").split("/")
         else:
             article_topics = ["N/A"]
 
         # Category
-        if len(article_topics) >= 1:
+        article_category_wrapper = soup.find("div", attrs={"class": "slug-wrap"})
+        if article_category_wrapper:
+            article_category_container = article_category_wrapper.find("a")
+            if article_category_container:
+                article_category = article_category_container.get_text(strip=True).replace(":", " -")
+                if article_category not in article_topics:
+                    article_topics.append(article_category.title())
+        elif len(article_topics) >= 1:
             article_category = article_topics[-1]
-        elif article_fallback_wrapper:
-            article_fallback_container = article_fallback_wrapper.find("a")
-            if article_fallback_container:
-                article_fallback = article_fallback_container.get_text(strip=True)
-                article_category = article_fallback
         else:
             article_category = "N/A"
-
+        
         # Add NPR's tags to topics
         try:
             tag_list = soup.find("div", class_="tags")
             if tag_list:
                 tags = tag_list.find_all("li")
                 for tag in tags:
-                    text = tag.get_text(strip=True)
+                    text = tag.get_text(strip=True).title()
                     article_topics.insert(0, text)
         except Exception as e:
             pass
+
+        # Tags
+        article_tags = ["NPR"]
+        if "N/A" not in article_topics:
+            for topic in article_topics:
+                article_tags.append((sanitize(topic)).replace(" ", ""))
+        if "N/A" != article_category:
+            if article_category not in article_topics:
+                article_tags.append((sanitize(article_category)).replace(" ", ""))
 
         if main_content_area:
             article_type = "article"
@@ -514,7 +519,7 @@ def save_markdown_file(url: str, content: str, html_content: str):
             cover = f"<picture><img src='{article_cover_container.get('content')}'/></picture>"
             cover_url = article_cover_container.get("content")
 
-        markdown_content = f"---\ntitle: {article_title}\noutlet: NPR\nsource: {url}\nauthor: {article_author}\ncategory: {article_category}\ntopics: {article_topics}\ntype: {article_type}\npublished_date: {article_date}\npublished_timestamp: {article_timestamp}\nscraped_timestamp: {CURRENT_TIMESTAMP}\ncover: {cover}\ncover_url: {cover_url}\ntags: NPR\n---\n\n{content}"
+        markdown_content = f"---\ntitle: {article_title}\noutlet: NPR\nsource: {url}\nauthor: {article_author}\ncategory: {article_category}\ntopics: {article_topics}\ntype: {article_type}\npublished_date: {article_date}\npublished_timestamp: {article_timestamp}\nscraped_timestamp: {CURRENT_TIMESTAMP}\ncover: {cover}\ncover_url: {cover_url}\ntags: {article_tags}\n---\n\n{content}"
 
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(markdown_content)
