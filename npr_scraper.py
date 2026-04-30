@@ -149,7 +149,7 @@ def scrape_article_content(url: str) -> Optional[str]:
         article_title = f"# {article_title_container.get_text(strip=True)}"
         header_parts.append(article_title)
     else:
-        # Return None if article does not have title
+        # Return None (skip article) if article does not have title
         return None
 
     # Date
