@@ -554,14 +554,25 @@ def save_markdown_file(url: str, content: str, output_dir: Path, html_content: s
             article_category_container = article_category_wrapper.find("a")
             if article_category_container:
                 article_category = article_category_container.get_text(strip=True).replace(":", " -")
-                if article_category not in article_topics:
+                if article_category != '' and article_category not in article_topics:
                     article_topics.append(article_category)
+                if article_category == '':
+                    if len(article_topics) >= 1:
+                        article_category = article_topics[-1]
+                        if article_category not in article_topics:
+                            article_topics.append(article_category)
+                    else:
+                        article_category = "N/A"
+                        if article_category not in article_topics:
+                            article_topics.append(article_category)
         elif len(article_topics) >= 1:
             article_category = article_topics[-1]
-            article_topics.append(article_category)
+            if article_category not in article_topics:
+                article_topics.append(article_category)
         else:
             article_category = "N/A"
-            article_topics.append(article_category)
+            if article_category not in article_topics:
+                article_topics.append(article_category)
         
         # Add NPR's tags to topics
         try:
