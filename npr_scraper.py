@@ -1,3 +1,4 @@
+from acronyms import acronyms
 from bs4 import BeautifulSoup
 import datetime as dt
 import json
@@ -556,7 +557,7 @@ def save_markdown_file(url: str, content: str, output_dir: Path, html_content: s
             if article_category_container:
                 article_category = article_category_container.get_text(strip=True).replace(":", " -")
                 if article_category not in article_topics:
-                    article_topics.append(article_category.title())
+                    article_topics.append(article_category)
         elif len(article_topics) >= 1:
             article_category = article_topics[-1]
         else:
@@ -569,7 +570,7 @@ def save_markdown_file(url: str, content: str, output_dir: Path, html_content: s
                 tags = tag_list.find_all("li")
                 for tag in tags:
                     text = tag.get_text(strip=True).title()
-                    article_topics.insert(0, text)
+                    article_topics.insert(-1, text)
         except Exception as e:
             pass
 
