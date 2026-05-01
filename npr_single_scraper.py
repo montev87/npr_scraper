@@ -470,8 +470,6 @@ def save_markdown_file(url: str, content: str, html_content: str):
         )
         if article_topics_container:
             article_topics = article_topics_container.get("content").replace(":", " -").split("/")
-        else:
-            article_topics = ["N/A"]
 
         # Category
         article_category_wrapper = soup.find("div", attrs={"class": "slug-wrap"})
@@ -483,8 +481,10 @@ def save_markdown_file(url: str, content: str, html_content: str):
                     article_topics.append(article_category)
         elif len(article_topics) >= 1:
             article_category = article_topics[-1]
+            article_topics.append(article_category)
         else:
             article_category = "N/A"
+            article_topics.append(article_category)
         
         # Add NPR's tags to topics
         try:
