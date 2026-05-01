@@ -34,12 +34,12 @@ def main():
         print("                 NPR Web Scraper Utility                     ")
         print("=============================================================")
 
-        # 1. Fetch the page content
+        # Fetch page content
         html_content = fetch_content(BASE_URL)
         if not html_content:
             return
 
-        # 2. Identify all article links
+        # Identify all article links
         article_links = extract_article_links(html_content)
         if not article_links:
             print(
@@ -51,7 +51,7 @@ def main():
 
         successful_saves = 0
 
-        # 3. Loop through links, scrape, and save
+        # Loop through links, scrape, and save
         for i, article_link in enumerate(article_links):
             print(
                 f"\n{'='*20}\nProcessing article {i+1}/{len(article_links)}: {article_link}"
@@ -664,13 +664,13 @@ def sanitize(raw_text: str) -> str:
     Cleans and sanitizes a string (like an article title) to be Obsidian and filesystem safe.
     This function removes characters invalid for Obsidian and most operating systems.
     """
-    # 1. Remove specified illegal characters: *, \, /, <, >, :, |, ?, and ".
+    # Remove specified illegal characters: *, \, /, <, >, :, |, ?, and ".
     cleaned_text = re.sub(r"[*\\/<>:|\?\"]", "", raw_text)
 
-    # 2. Collapse sequences of whitespace and dashes into single spaces.
+    # Collapse sequences of whitespace and dashes into single spaces.
     cleaned_text = re.sub(r"[\s-]+", " ", cleaned_text).strip()
 
-    # 3. Ensure the resulting string isn't empty
+    # Ensure the resulting string isn't empty
     if not cleaned_text:
         return "Untitled"
 

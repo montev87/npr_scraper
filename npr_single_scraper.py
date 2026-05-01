@@ -174,7 +174,7 @@ def scrape_article_content(url: str) -> Optional[str]:
             if is_excluded:
                 continue
 
-            # 3. Determine the tag type and format it accordingly
+            # Determine tag type and format accordingly
             tag_name = tag.name
 
             if tag_name in ["h1", "h2", "h3", "h4", "h5", "h6"]:
@@ -245,8 +245,6 @@ def scrape_article_content(url: str) -> Optional[str]:
                                 pass
 
             elif tag_name == "p":
-                # 1. Use 'contents' to iterate over everything: both text nodes and tags.
-                # This ensures we don't skip the 'unformatted' text between <a> tags.
                 paragraph_segments = []
                 parent = tag.parent
 
@@ -339,7 +337,7 @@ def scrape_article_content(url: str) -> Optional[str]:
                 formatted_content = "\n".join(list_parts)
                 formatted_content_list.append(formatted_content)
 
-        # 4. Join the list of formatted blocks
+        # Join the list of formatted blocks
         article_content = "\n\n".join(formatted_content_list)
 
     else:
@@ -589,14 +587,13 @@ def sanitize(raw_text: str) -> str:
     Clean and sanitize a string (e.g., an article title) to be Obsidian and filesystem safe.
     This function removes characters invalid for Obsidian and most operating systems.
     """
-    # 1. Remove specified illegal characters: *, \, /, <, >, :, |, ?, and ".
-    # We do NOT match space here, allowing Step 2 to handle general spacing.
+    # Remove specified illegal characters: *, \, /, <, >, :, |, ?, and ".
     cleaned_text = re.sub(r"[*\\/<>:|\?\"]", "", raw_text)
 
-    # 2. Collapse sequences of whitespace and dashes into single spaces.
+    # Collapse sequences of whitespace and dashes into single spaces.
     cleaned_text = re.sub(r"[\s-]+", " ", cleaned_text).strip()
 
-    # 3. Ensure the resulting string isn't empty
+    # Ensure the resulting string isn't empty
     if not cleaned_text:
         return "Untitled"
 
