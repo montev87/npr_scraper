@@ -417,10 +417,10 @@ def save_markdown_file(url: str, content: str, html_content: str):
     article_title_container = soup.find("div", class_="storytitle")
     if article_title_container:
         if main_content_area:
-            article_title = f'"{article_title_container.get_text(strip=True).strip(':')}"'
+            article_title = f'"{article_title_container.get_text(strip=True).replace(':', ' -').replace('"', '\'')}"'
         elif transcript_content_area:
             article_title = (
-                f'"{article_title_container.get_text(strip=True)} (Transcript)"'
+                f'"{article_title_container.get_text(strip=True).replace(':', ' -').replace('"', '\'')} (Transcript)"'
             )
     else:
         return None

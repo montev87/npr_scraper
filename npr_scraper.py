@@ -480,11 +480,11 @@ def save_markdown_file(url: str, content: str, output_dir: Path, html_content: s
     article_title_container = soup.find("div", class_="storytitle")
     if article_title_container:
         if main_content_area:
-            article_title = f'"{article_title_container.get_text(strip=True)}"'
+            article_title = f'"{article_title_container.get_text(strip=True).replace(':', ' -').replace('"', '\'')}"'
         # If transcript, appends "(Transcript)" to filename to prevent filename conflicts
         elif transcript_content_area:
             article_title = (
-                f'"{article_title_container.get_text(strip=True)} (Transcript)"'
+                f'"{article_title_container.get_text(strip=True).replace(':', ' -').replace('"', '\'')} (Transcript)"'
             )
     else:
         return None
