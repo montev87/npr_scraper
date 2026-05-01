@@ -183,7 +183,7 @@ def scrape_article_content(url: str) -> Optional[str]:
                 try:
                     level = int(tag_name[1])
                     markdown_header = "#" * level
-                    text = tag.get_text(strip=True)
+                    text = tag.get_text()
                     formatted_content_list.append(f"{markdown_header} {text}")
                 except ValueError:
                     pass  # Skip if tag naming convention is broken
