@@ -588,7 +588,8 @@ def save_markdown_file(url: str, content: str, output_dir: Path, html_content: s
                         else:
                             text[i] = word.replace(":", " -")
                     text = " ".join(text)
-                    article_topics.insert(-1, text)
+                    if text not in article_topics:
+                        article_topics.insert(-1, text)
         except Exception as e:
             pass
 
