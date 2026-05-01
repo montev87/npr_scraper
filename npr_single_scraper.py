@@ -492,7 +492,12 @@ def save_markdown_file(url: str, content: str, html_content: str):
             if tag_list:
                 tags = tag_list.find_all("li")
                 for tag in tags:
-                    text = tag.get_text(strip=True).title()
+                    text = tag.get_text(strip=True).title().split(" ")
+                    for i in range(len(text)):
+                        word = text[i]
+                        if word.upper() in acronyms:
+                            text[i] = word.upper()
+                    text = " ".join(text)
                     article_topics.insert(-1, text)
         except Exception as e:
             pass
