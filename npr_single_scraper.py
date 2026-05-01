@@ -23,7 +23,7 @@ def main():
 
         url = input("Enter the URL of the article you would like to scrape: ")
 
-        print(f"Processing article {url}")
+        print(f"Processing article: {url}")
 
         # Scrape the content of the single article using the current page's HTML structure
         article_content = scrape_article_content(url)
@@ -507,7 +507,9 @@ def save_markdown_file(url: str, content: str, html_content: str):
                     for i in range(len(text)):
                         word = text[i]
                         if word.upper() in acronyms:
-                            text[i] = word.upper()
+                            text[i] = word.upper().replace(":", " -")
+                        else:
+                            text[i] = word.replace(":", " -")
                     text = " ".join(text)
                     article_topics.insert(-1, text)
         except Exception as e:

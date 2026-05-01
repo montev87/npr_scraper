@@ -584,7 +584,9 @@ def save_markdown_file(url: str, content: str, output_dir: Path, html_content: s
                     for i in range(len(text)):
                         word = text[i]
                         if word.upper() in acronyms:
-                            text[i] = word.upper()
+                            text[i] = word.upper().replace(":", " -")
+                        else:
+                            text[i] = word.replace(":", " -")
                     text = " ".join(text)
                     article_topics.insert(-1, text)
         except Exception as e:
