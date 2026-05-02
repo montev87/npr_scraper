@@ -316,25 +316,38 @@ def scrape_article_content(url: str) -> Optional[str]:
                 list_parts = []
                 list_items = tag.find_all("li")
                 for item in list_items:
+                    text_parts = []
                     for content in item.contents:
                         if isinstance(content, str):
                             text = content.strip()
-                            list_parts.append(f"  • {text}")
-                        if hasattr(content, "name"):
+                            if text:
+                                text_parts.append(text)
+                        elif hasattr(content, "name"):
                             if content.name == "a":
                                 if hasattr(content, "href"):
+                                    link_parts = []
                                     href = content.get("href")
-                                    text_parts = []
                                     for c in content.contents:
                                         if isinstance(c, str):
                                             text = c.strip()
                                         elif hasattr(c, "name"):
                                             if c.name == "em":
                                                 text = f"*{c.get_text(strip=True)}*"
-                                        text_parts.append(text)
-                                    text = reconstruct(text_parts)
-                                link = f"[{text}]({href})"
-                                list_parts.append(f" • {link}")
+                                        if text:
+                                            link_parts.append(text)
+                                    text = reconstruct(link_parts)
+                                    link = f"[{text}]({href})"
+                                    text_parts.append(link)
+                            elif content.name == "em":
+                                text = f"*{content.get_text(strip=True)}*"
+                                if text:
+                                    text_parts.append(text)
+                            elif content.name == "strong":
+                                text = f"**{content.get_text(strip=True)}**"
+                                if text:
+                                    text_parts.append(text)
+                    list_part = reconstruct(text_parts)
+                    list_parts.append(f"  • {list_part}")
                 formatted_content = "\n".join(list_parts)
                 formatted_content_list.append(formatted_content)
 
