@@ -1,1 +1,0 @@
-acronyms = ["AAA", "AI", "CIA", "DEA", "DHS", "FBI", "MAGA", "MAHA", "NPR", "TED", "USA"]

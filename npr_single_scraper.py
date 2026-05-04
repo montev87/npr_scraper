@@ -1,4 +1,3 @@
-from acronyms import acronyms
 from bs4 import BeautifulSoup
 import datetime as dt
 import json
@@ -512,6 +511,8 @@ def save_markdown_file(url: str, content: str, html_content: str):
     
         # Add NPR's tags to topics
         try:
+            # List of commonly used acronyms - needs to be expanded
+            acronyms = ["AAA", "AI", "CIA", "DEA", "DHS", "FBI", "MAGA", "MAHA", "NPR", "TED", "USA"]
             tag_list = soup.find("div", class_="tags")
             if tag_list:
                 tags = tag_list.find_all("li")
@@ -540,16 +541,23 @@ def save_markdown_file(url: str, content: str, html_content: str):
                 if len(article_category) <= 25:
                     article_tags.append((sanitize(article_category)).replace(" ", "").replace(".", "").replace("'", ""))
 
+        # Type
         if main_content_area:
             article_type = "article"
         elif transcript_content_area:
             article_type = "transcript"
 
+        # Cover
         article_cover_container = soup.find(
             "meta", attrs={"name": "cXenseParse:zbq-imageUrl"}
         )
+        alt_text_container = soup.find("meta", attrs={"name": "cXenseParse:zbq-imageAltText"})
         if article_cover_container:
-            cover = f"<picture><img src='{article_cover_container.get('content')}'/></picture>"
+            if alt_text_container:
+                alt_text = alt_text_container.get("content")
+                cover = f'"![{alt_text}]({article_cover_container.get('content')})"'
+            else:
+                cover = f'"![Cover]({article_cover_container.get('content')})"'
             cover_url = article_cover_container.get("content")
 
         markdown_content = f"---\ntitle: {article_title}\noutlet: NPR\nsource: {url}\nauthor: {article_author}\ncategory: {article_category}\ntopics: {article_topics}\ntype: {article_type}\npublished_date: {article_date}\npublished_timestamp: {article_timestamp}\nscraped_timestamp: {CURRENT_TIMESTAMP}\ncover: {cover}\ncover_url: {cover_url}\ntags: {article_tags}\n---\n\n{content}"
