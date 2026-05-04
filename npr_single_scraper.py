@@ -551,13 +551,8 @@ def save_markdown_file(url: str, content: str, html_content: str):
         article_cover_container = soup.find(
             "meta", attrs={"name": "cXenseParse:zbq-imageUrl"}
         )
-        alt_text_container = soup.find("meta", attrs={"name": "cXenseParse:zbq-imageAltText"})
-        if article_cover_container:
-            if alt_text_container:
-                alt_text = alt_text_container.get("content")
-                cover = f'"![{alt_text}]({article_cover_container.get('content')})"'
-            else:
-                cover = f'"![Cover]({article_cover_container.get('content')})"'
+        if article_cover_container:            
+            cover = f'<img src="{article_cover_container.get('content')}"/>'
             cover_url = article_cover_container.get("content")
 
         markdown_content = f"---\ntitle: {article_title}\noutlet: NPR\nsource: {url}\nauthor: {article_author}\ncategory: {article_category}\ntopics: {article_topics}\ntype: {article_type}\npublished_date: {article_date}\npublished_timestamp: {article_timestamp}\nscraped_timestamp: {CURRENT_TIMESTAMP}\ncover: {cover}\ncover_url: {cover_url}\ntags: {article_tags}\n---\n\n{content}"
