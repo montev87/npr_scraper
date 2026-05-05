@@ -512,7 +512,7 @@ def save_markdown_file(url: str, content: str, html_content: str):
         # Add NPR's tags to topics
         try:
             # List of commonly used acronyms - needs to be expanded
-            acronyms = ["AAA", "AI", "CIA", "DEA", "DHS", "FBI", "MAGA", "MAHA", "NPR", "TED", "USA"]
+            acronyms = ["AAA", "AI", "CIA", "DEA", "DHS", "FBI", "MAGA", "MAHA", "NPR", "TED", "UAE", "USA"]
             tag_list = soup.find("div", class_="tags")
             if tag_list:
                 tags = tag_list.find_all("li")
