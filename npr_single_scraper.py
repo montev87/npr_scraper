@@ -535,11 +535,11 @@ def save_markdown_file(url: str, content: str, html_content: str):
         if "N/A" not in article_topics:
             for topic in article_topics:
                 if len(topic) <= 25:
-                    article_tags.append((sanitize(topic)).replace(" ", "").replace(".", "").replace("'", ""))
+                    article_tags.append((sanitize(topic)).replace(" ", "").replace(".", "").replace(",", "").replace("'", ""))
         if "N/A" != article_category:
             if article_category not in article_topics:
                 if len(article_category) <= 25:
-                    article_tags.append((sanitize(article_category)).replace(" ", "").replace(".", "").replace("'", ""))
+                    article_tags.append((sanitize(article_category)).replace(" ", "").replace(".", "").replace(",", "").replace("'", ""))
 
         # Type
         if main_content_area:
